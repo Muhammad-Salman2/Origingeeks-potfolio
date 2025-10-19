@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Loader2 } from "lucide-react";
+import emailjs from '@emailjs/browser';
 
 // Primary accent color from your components
 const PRIMARY_COLOR = "#0A66C2";
@@ -39,14 +40,37 @@ const ContactForm = () => {
     setLoading(true);
     setStatus("");
 
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // In a real app, you would send formData to a backend endpoint here.
-    
-    setLoading(false);
-    setStatus("Message sent successfully! We'll be in touch soon.");
-    setFormData({ name: "", email: "", message: "" });
+    // EmailJS Configuration - Environment variables se load hongi
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID";
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
+
+    // Template parameters - ye variables EmailJS template me jayenge
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+      to_name: "Origin Geeks Team", // Aap ka company name
+    };
+
+    try {
+      // EmailJS se email send karo
+      const response = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
+      console.log("Email sent successfully!", response);
+      setLoading(false);
+      setStatus("✅ Message sent successfully! We'll be in touch soon.");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      setLoading(false);
+      setStatus("❌ Failed to send message. Please try again or email us directly.");
+    }
   };
 
   const inputStyle = "w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-offset-1 transition duration-200 focus:outline-none";
