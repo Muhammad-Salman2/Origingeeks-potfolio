@@ -5,7 +5,7 @@ import { ReactTyped } from "react-typed";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-gradient-to-b from-white via-[#E8F1FB] to-[#DDEAFF]">
+    <section id="home" className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-gradient-to-b from-white via-[#E8F1FB] to-[#DDEAFF]">
       {/* Main Heading */}
       <h1 className="text-4xl sm:text-6xl font-bold text-black leading-tight">
         Transforming Ideas Into <br />

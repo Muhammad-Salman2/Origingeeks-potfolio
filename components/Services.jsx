@@ -51,7 +51,7 @@ const Services = () => {
   };
 
   return (
-    <section className="w-full py-20 bg-gradient-to-b from-white via-[#EAF3FF] to-white">
+    <section id="services" className="w-full py-20 bg-gradient-to-b from-white via-[#EAF3FF] to-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Title */}
         <div className="text-center mb-12">

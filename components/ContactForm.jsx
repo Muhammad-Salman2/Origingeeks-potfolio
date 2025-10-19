@@ -52,7 +52,7 @@ const ContactForm = () => {
   const inputStyle = "w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-offset-1 transition duration-200 focus:outline-none";
 
   return (
-    <section className="min-h-screen py-16 md:py-24 bg-white" style={{ fontFamily: 'Inter, sans-serif' }}>
+    <section id="contact" className="min-h-screen py-16 md:py-24 bg-white" style={{ fontFamily: 'Inter, sans-serif' }}>
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header Section */}
