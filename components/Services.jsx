@@ -66,10 +66,9 @@ const Services = () => {
         {/* Services Grid */}
         <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
           {servicesData.map((service, index) => (
-            <motion.div
+            <div
               key={index}
-              whileHover={{ y: -5 }}
-              className="bg-white shadow-md rounded-xl p-6 border border-gray-100"
+              className="bg-white shadow-md rounded-xl p-6 border border-gray-100 hover:-translate-y-1 transition-all duration-300"
             >
               <h3 className="text-xl font-semibold text-gray-900">
                 {service.title}
@@ -79,11 +78,11 @@ const Services = () => {
               {/* Learn More */}
               <button
                 onClick={() => toggleDetail(index)}
-                className="mt-4 flex items-center gap-1 text-[#0A66C2] font-medium cursor-pointer"
+                className="mt-4 flex items-center gap-1 text-[#0A66C2] font-medium cursor-pointer hover:text-[#004182] transition-colors"
               >
                 Learn More
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform ${
+                  className={`w-4 h-4 transition-transform duration-300 ${
                     openIndex === index ? "rotate-180" : "rotate-0"
                   }`}
                 />
@@ -92,17 +91,20 @@ const Services = () => {
               {/* Expanded Detail */}
               <AnimatePresence>
                 {openIndex === index && (
-                  <motion.p
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="text-gray-600 mt-3 text-sm"
+                  <motion.div
+                    initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                    animate={{ opacity: 1, height: "auto", marginTop: 12 }}
+                    exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="overflow-hidden"
                   >
-                    {service.detail}
-                  </motion.p>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {service.detail}
+                    </p>
+                  </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

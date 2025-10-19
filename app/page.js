@@ -36,8 +36,8 @@ export default function Home() {
     </section>
 
     {/* Team Section */}
-    <section id="team" className="min-h-screen py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="team" className=" py-20 bg-white ">
+      <div className="max-w-6xl mx-auto px-6 ">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900">
             Meet Our <span className="text-[#0A66C2]">Team</span>
@@ -46,7 +46,7 @@ export default function Home() {
             The talented people behind Origin Geeks.
           </p>
         </div>
-        <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-8 ">
           {[1, 2, 3, 4].map((member) => (
             <div key={member} className="text-center">
               <div className="w-32 h-32 mx-auto bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-full mb-4"></div>
